@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <title>Tic Tac Toe - Welcome</title> <!-- Title of the page -->
+</head>
+<body>
+    <div class="welcome-screen"> <!-- Main container for the welcome screen -->
+        <h1>Tic Tac Toe</h1> <!-- Game title -->
+        <div class="loading-bar"> <!-- Container for the loading bar -->
+            <div class="loading"></div> <!-- Loading indicator -->
+        </div>
+        <p>Loading...</p> <!-- Loading text -->
+    </div>
+
+    <script>
+        // Simulate loading
+        setTimeout(() => {
+            window.location.href = "game.html"; // Redirect to the game page after loading
+        }, 3000); // Time in milliseconds before redirecting (3000ms = 3 seconds)
+    </script>
+</body>
+</html>
