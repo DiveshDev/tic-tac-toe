@@ -13,6 +13,11 @@ body {
     text-align: center; /* Center text within the welcome screen */
 }
 
+h1 {
+    font-size: 48px; /* Increase the font size of the title */
+    margin-bottom: 20px; /* Space below the title */
+}
+
 .loading-bar {
     width: 80%; /* Width of the loading bar */
     background-color: gray; /* Background color of the bar */
@@ -22,7 +27,7 @@ body {
 
 .loading {
     width: 0; /* Start width at 0 */
-    height: 100%; /* Full height of the loading bar */
+    height: 30px; /* Height of the loading indicator */
     background-color: green; /* Color of the loading indicator */
     border-radius: 5px; /* Rounded corners */
     animation: loading 3s ease-in-out forwards; /* Animation for filling the bar */
@@ -36,4 +41,9 @@ body {
     to {
         width: 100%; /* Fill to 100% */
     }
+}
+
+p {
+    font-size: 24px; /* Increase the font size of the loading text */
+    margin-top: 10px; /* Space above the loading text */
 }
