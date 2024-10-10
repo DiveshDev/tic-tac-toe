@@ -1,58 +1,40 @@
+// Simulate loading time and remove the loading screen after 2 seconds
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.display = 'none';
+        document.body.classList.remove('loading');
+        document.getElementById('menu').style.display = 'block';
+    }, 2000); // 2 seconds loading time
+});
+
+// Show difficulty selection after clicking AI mode
+document.getElementById('ai-mode').addEventListener('click', () => {
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById('ai-difficulty').style.display = 'block';
+});
+
+// Start game with selected difficulty
+document.getElementById('easy').addEventListener('click', () => startGame('easy'));
+document.getElementById('normal').addEventListener('click', () => startGame('normal'));
+document.getElementById('hard').addEventListener('click', () => startGame('hard'));
+document.getElementById('impossible').addEventListener('click', () => startGame('impossible'));
+
+function startGame(difficulty) {
+    console.log(`Starting game with ${difficulty} difficulty`);
+
+    document.getElementById('ai-difficulty').style.display = 'none';
+    document.getElementById('game-board').style.display = 'grid';
+    // Initialize the game board logic based on difficulty level here
+}
+
+// Game Board Logic (basic example, can be expanded with AI logic later)
 const cells = document.querySelectorAll('.cell');
-const resetButton = document.getElementById('reset');
-let currentPlayer = 'X';
-let gameActive = true;
-let gameState = ["", "", "", "", "", "", "", "", ""];
-
-const winningConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
-
-function handleCellClick(e) {
-    const clickedCell = e.target;
-    const clickedIndex = clickedCell.getAttribute('data-index');
-
-    if (gameState[clickedIndex] !== "" || !gameActive) {
-        return;
-    }
-
-    gameState[clickedIndex] = currentPlayer;
-    clickedCell.textContent = currentPlayer;
-
-    if (checkWinner()) {
-        alert(`${currentPlayer} wins!`);
-        gameActive = false;
-        return;
-    }
-
-    if (gameState.every(cell => cell !== "")) {
-        alert("It's a draw!");
-        gameActive = false;
-        return;
-    }
-
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-}
-
-function checkWinner() {
-    return winningConditions.some(condition => {
-        return condition.every(index => gameState[index] === currentPlayer);
+cells.forEach(cell => {
+    cell.addEventListener('click', function() {
+        if (!this.innerText) {
+            this.innerText = 'X'; // Player's move
+            // Here you can implement AI moves for different difficulty levels
+        }
     });
-}
-
-function resetGame() {
-    gameState = ["", "", "", "", "", "", "", "", ""];
-    gameActive = true;
-    currentPlayer = 'X';
-    cells.forEach(cell => cell.textContent = "");
-}
-
-cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-resetButton.addEventListener('click', resetGame);
+});
