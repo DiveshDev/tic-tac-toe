@@ -1,98 +1,50 @@
-/* Body Styling */
-body {
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif;
-    cursor: url('cursor.gif'), auto;
+body {  
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
 }
 
-/* Loading Screen */
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    font-size: 2em;
-    z-index: 9999;
-}
-
-/* Home Screen with Custom Background */
-#menu {
-    background-image: url('homescreen.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+h1 {
     text-align: center;
-    padding: 20px;
 }
 
-/* RGB Title */
-.rgb-title {
-    font-size: 4em;
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: rgbEffect 5s infinite linear;
-}
-
-/* RGB Animation */
-@keyframes rgbEffect {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-/* Bigger Buttons */
-.menu-btn {
-    font-size: 1.5em;
-    padding: 15px 30px;
-    margin: 15px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.menu-btn:hover {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-/* Game Board Styling */
-#game-board {
+#board {
+    margin-left: auto;
+    margin-right: auto;
+    width: 375px;
+    height: 375px;
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
 }
 
-.cell {
-    width: 100px;
-    height: 100px;
-    background-color: rgba(255, 255, 255, 0.8);
+.square {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #D3D3D3;
+    background-color: #F5F5F5;
+    font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
-    cursor: pointer;
 }
 
-body.loading {
-    overflow: hidden;
+.square:hover {
+    background-color: #FFFFE0;
 }
 
-body.loading * {
-    pointer-events: none;
+#restartButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 150px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 40px;
+    font-size: 18px;
+}
+
+#restartButton:hover {
+    background-color: #000000;
+    color: #FFFFFF;
 }
