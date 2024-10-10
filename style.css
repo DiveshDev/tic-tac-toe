@@ -1,0 +1,39 @@
+body {
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    background-color: black; /* Background color */
+    color: white; /* Text color */
+    font-family: Arial, sans-serif; /* Font style */
+}
+
+.welcome-screen {
+    text-align: center; /* Center text within the welcome screen */
+}
+
+.loading-bar {
+    width: 80%; /* Width of the loading bar */
+    background-color: gray; /* Background color of the bar */
+    margin: 20px auto; /* Margin for spacing */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.loading {
+    width: 0; /* Start width at 0 */
+    height: 100%; /* Full height of the loading bar */
+    background-color: green; /* Color of the loading indicator */
+    border-radius: 5px; /* Rounded corners */
+    animation: loading 3s ease-in-out forwards; /* Animation for filling the bar */
+}
+
+/* Keyframes for loading animation */
+@keyframes loading {
+    from {
+        width: 0; /* Start from 0% */
+    }
+    to {
+        width: 100%; /* Fill to 100% */
+    }
+}
