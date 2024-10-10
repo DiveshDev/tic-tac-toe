@@ -2,13 +2,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('background.png');
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     font-family: Arial, sans-serif;
     cursor: url('cursor.gif'), auto;
 }
@@ -29,12 +24,49 @@ body {
     z-index: 9999;
 }
 
-/* Game Menu */
-#menu, #ai-difficulty {
+/* Home Screen with Custom Background */
+#menu {
+    background-image: url('homescreen.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
+}
+
+/* RGB Title */
+.rgb-title {
+    font-size: 4em;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: rgbEffect 5s infinite linear;
+}
+
+/* RGB Animation */
+@keyframes rgbEffect {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Bigger Buttons */
+.menu-btn {
+    font-size: 1.5em;
+    padding: 15px 30px;
+    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
     border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* Game Board Styling */
