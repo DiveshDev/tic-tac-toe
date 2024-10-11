@@ -6,8 +6,9 @@ const homeScreen = document.getElementById('home-screen');
 const gameBoard = document.getElementById('game-board');
 const difficultyScreen = document.getElementById('difficulty-screen');
 let board = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
+let currentPlayer = 'X'; // Player starts as X
 let isGameOver = false;
+let aiDifficulty = 'easy'; // Default difficulty
 
 // Loading Screen Animation
 setTimeout(() => {
@@ -23,13 +24,14 @@ function showDifficultyMenu() {
 
 // Function to Start the Game
 function startGame(difficulty) {
+  aiDifficulty = difficulty; // Set AI difficulty
   difficultyScreen.style.display = 'none';
   gameBoard.style.display = 'block';
-  initGame(difficulty);
+  initGame();
 }
 
 // Initialize the Game
-function initGame(difficulty) {
+function initGame() {
   cells.forEach(cell => {
     cell.addEventListener('click', handleClick);
     cell.innerText = '';
@@ -58,6 +60,33 @@ function handleClick(e) {
   } else {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     statusText.innerText = `Player ${currentPlayer}'s Turn`;
+    
+    if (currentPlayer === 'O' && !isGameOver) {
+      aiMove();
+    }
+  }
+}
+
+// AI Move Function
+function aiMove() {
+  let availableCells = board.map((cell, index) => cell === '' ? index : null).filter(index => index !== null);
+  
+  // Simple AI: Random Move
+  if (availableCells.length > 0) {
+    const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
+    board[randomIndex] = currentPlayer;
+    cells[randomIndex].innerText = currentPlayer;
+
+    if (checkWin()) {
+      statusText.innerText = `Player ${currentPlayer} Wins!`;
+      isGameOver = true;
+    } else if (board.includes('') === false) {
+      statusText.innerText = `It's a Draw!`;
+      isGameOver = true;
+    } else {
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      statusText.innerText = `Player ${currentPlayer}'s Turn`;
+    }
   }
 }
 
